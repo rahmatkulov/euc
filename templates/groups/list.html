@@ -1,0 +1,70 @@
+{% extends 'skeleton.html' %}
+{% block container %}
+<div class="row">
+
+    <div class="col-md-12">
+        <!--begin::Advance Table Widget 4-->
+        <div class="card card-custom card-stretch gutter-b">
+            <!--begin::Header-->
+            <div class="card-header border-0 py-5">
+                <h3 class="card-title align-items-start flex-column">
+                    <span class="card-label font-weight-bolder text-dark">Projects</span>
+                </h3>
+                <div class="card-toolbar">
+                    <a href="" class="btn btn-warning font-weight-bolder font-size-sm">Create Group</a>
+                </div>
+            </div>
+            <!--end::Header-->
+            <!--begin::Body-->
+            <div class="card-body pt-0 pb-3">
+                <div class="tab-content">
+                    <!--begin::Table-->
+                    <div class="table-responsive">
+                        <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                            <thead>
+                                <tr class="text-left text-uppercase">
+                                    <th style="min-width: 150px" class="pl-7">
+                                        <span class="text-dark-75">Teacher</span>
+                                    </th>
+                                    <th style="min-width: 100px">Group Number</th>
+                                    <th style="min-width: 100px">Category</th>
+                                    <th style="min-width: 100px">Number of Students</th>
+                                    <th style="min-width: 100px">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for object in objects %}
+
+                                <tr>
+                                    <td class="pl-0 py-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-2 symbol symbol-40 symbol-light-success">
+                                                <span class="symbol-label">{{ object.group_number }}</span>								
+                                            </div>
+                                            <div>
+                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-2 font-size-lg">{{object.teacher}}</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.group_number}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.category}}</span>
+                                    </td>
+                                    <td></td>
+                                    <td nowrap="nowrap">{% include 'parts/actions.html'%}</td>
+
+                                </tr>
+                                {% endfor %}
+                        </table>
+                    </div>
+                    <!--end::Table-->
+                </div>
+            </div>
+            <!--end::Body-->
+        </div>
+        <!--end::Advance Table Widget 4-->
+    </div>
+</div>
+{% endblock %}
