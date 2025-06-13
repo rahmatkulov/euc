@@ -1,70 +1,139 @@
-{% extends 'skeleton.html' %}
-{% block container %}
-<div class="row">
+{% extends "base.html" %}
+{% load static %}
+    {% block content %}
+<!--begin::Head-->
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <!--begin::Main-->
+    <!--begin::Header Mobile-->
+    {% include "parts/header-mobile.html" %}
+    <!--end::Header Mobile-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+            <!--begin::Aside-->
+            {% include "parts/aside.html" with menu_parent='groups' menu_child='group_list' %}
+            <!--end::Aside-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <!--begin::Header-->
+                {% include "parts/header.html" %}
+                <!--end::Header-->
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
 
-    <div class="col-md-12">
-        <!--begin::Advance Table Widget 4-->
-        <div class="card card-custom card-stretch gutter-b">
-            <!--begin::Header-->
-            <div class="card-header border-0 py-5">
-                <h3 class="card-title align-items-start flex-column">
-                    <span class="card-label font-weight-bolder text-dark">Projects</span>
-                </h3>
-                <div class="card-toolbar">
-                    <a href="" class="btn btn-warning font-weight-bolder font-size-sm">Create Group</a>
-                </div>
-            </div>
-            <!--end::Header-->
-            <!--begin::Body-->
-            <div class="card-body pt-0 pb-3">
-                <div class="tab-content">
-                    <!--begin::Table-->
-                    <div class="table-responsive">
-                        <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
-                            <thead>
-                                <tr class="text-left text-uppercase">
-                                    <th style="min-width: 150px" class="pl-7">
-                                        <span class="text-dark-75">Teacher</span>
-                                    </th>
-                                    <th style="min-width: 100px">Group Number</th>
-                                    <th style="min-width: 100px">Category</th>
-                                    <th style="min-width: 100px">Number of Students</th>
-                                    <th style="min-width: 100px">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for object in objects %}
+                            <div class="row">
 
-                                <tr>
-                                    <td class="pl-0 py-6">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mr-2 symbol symbol-40 symbol-light-success">
-                                                <span class="symbol-label">{{ object.group_number }}</span>								
+                                <div class="col-md-12">
+                                    <!--begin::Advance Table Widget 4-->
+                                    <div class="card card-custom card-stretch gutter-b">
+                                        <!--begin::Header-->
+                                        <div class="card-header border-0 py-5">
+
+                                            <h3 class="card-title align-items-start flex-column">
+                                                <span class="card-label font-weight-bolder text-dark">Groups</span>
+                                            </h3>
+                                            <div class="input-icon">
+                                                <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query">
+                                                <span>
+                                                    <i class="flaticon2-search-1 text-muted"></i>
+                                                </span>
                                             </div>
-                                            <div>
-                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-2 font-size-lg">{{object.teacher}}</a>
+
+
+                                            <div class="card-toolbar">
+                                                <a href="" class="btn btn-warning font-weight-bolder font-size-sm">Create Group</a>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.group_number}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.category}}</span>
-                                    </td>
-                                    <td></td>
-                                    <td nowrap="nowrap">{% include 'parts/actions.html'%}</td>
+                                        <!--end::Header-->
+                                        <!--begin::Body-->
+                                        <div class="card-body pt-0 pb-3">
+                                            <div class="tab-content">
+                                                <!--begin::Table-->
+                                                <div class="table-responsive">
+                                                    <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                                                        <thead>
+                                                            <tr class="text-left text-uppercase">
+                                                                <th style="min-width: 150px" class="pl-7">
+                                                                    <span class="text-dark-75">Teacher</span>
+                                                                </th>
+                                                                <th style="min-width: 100px">Group Number</th>
+                                                                <th style="min-width: 100px">Category</th>
+                                                                <th style="min-width: 100px">Number of Students</th>
+                                                                <th style="min-width: 100px">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for object in objects %}
+                                                            {% url 'common:group-update' object.pk as u%}
+                                                            {% url 'common:group-delete' object.pk as d%}
+                                                            <tr>
+                                                                <td class="pl-0 py-6">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="mr-2 symbol symbol-40 symbol-light-success">
+                                                                            <span class="symbol-label">{{ object.group_number }}</span>								
+                                                                        </div>
+                                                                        <div>
+                                                                            <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-2 font-size-lg">{{object.teacher}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.group_number}}</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.category}}</span>
+                                                                </td>
+                                                                <td></td>
+                                                                <td nowrap="nowrap">{% include 'parts/actions.html' with update=u delete=d%}</td>
 
-                                </tr>
-                                {% endfor %}
-                        </table>
-                    </div>
-                    <!--end::Table-->
+                                                            </tr>
+                                                            {% endfor %}
+                                                    </table>
+                                                </div>
+                                                <!--end::Table-->
+                                            </div>
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::Advance Table Widget 4-->
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- .container -->
+                    </div> <!-- .d-flex.flex-column-fluid -->
                 </div>
+                <!--end::Content--> <!--begin::Footer-->
+                {% include "parts/footer.html" %}
+                <!--end::Footer-->
             </div>
-            <!--end::Body-->
+            <!--end::Wrapper-->
         </div>
-        <!--end::Advance Table Widget 4-->
+        <!--end::Page-->
     </div>
-</div>
+    <!--end::Main-->
+    <!-- begin::User Panel-->
+    {% include "parts/user-panel.html" %}
+    <!--begin::Quick Cart-->
+    <!--end::Quick Cart-->
+    <!--begin::Quick Panel-->
+    <!--end::Quick Panel-->
+    <!--begin::Chat Panel-->
+    <!--end::Chat Panel-->
+    <!--begin::Scrolltop-->
+    {% include "parts/scrolltop.html" %}
+    <!--end::Scrolltop-->
+    <!--begin::Sticky Toolbar-->
+    <!--end::Sticky Toolbar-->
+    <!--begin::Demo Panel-->
+    <!--end::Demo Panel-->
+
+
+</body>
+<!--end::Body-->
 {% endblock %}
+

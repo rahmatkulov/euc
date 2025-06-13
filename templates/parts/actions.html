@@ -1,5 +1,5 @@
 <span style="overflow: visible; position: relative; width: 125px">
-    <a href="{{update_url}}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Edit details">
+    <a href="{{update}}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Edit details">
         <span class="svg-icon svg-icon-md">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                 height="24px" viewBox="0 0 24 24" version="1.1">
@@ -24,7 +24,7 @@
 
     
     <a
-        href="{{delete_url}}"
+        href="{{delete}}"
         data-toggle="modal"
         data-target="#deleteModal"
         class="btn btn-sm btn-clean btn-icon removeButton"
@@ -58,7 +58,7 @@
                         Back
                     </button>
                     <a
-                        href=""
+                        href="{{delete}}"
                         id="modalDeleteButton"
                     >
                         <button type="button" class="btn btn-danger mb-3">Delete</button>

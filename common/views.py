@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView
+
+from common import forms
 from . import models
 
 
@@ -20,17 +22,19 @@ class GroupListView(ListView):
     paginate_by = 10
 
 class GroupCreateView(CreateView):
-    model = models.Group
+    model = models.Group 
+    form_class = forms.GroupForm
     template_name = "groups/create.html"
-    context_object_name = "objects"
+    context_object_name = "object"
     success_url = "common:group-list"
     success_create_url = "common:group-create"
 
 
 class GroupUpdateView(UpdateView):
     model = models.Group
+    form_class = forms.GroupForm
     template_name = "groups/update.html"
-    context_object_name = "objects"
+    context_object_name = "object"
     success_url = "common:group-list"
     success_update_url = "common:group-update"
 
