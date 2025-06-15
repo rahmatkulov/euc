@@ -17,8 +17,7 @@
 						<i class="symbol-badge bg-success"></i>
 					</div>
 					<div class="d-flex flex-column">
-						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">Rahmatkulov Muhammadjon</a>
-						<div class="text-muted mt-1">Software Engineer</div>
+                <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{% if user.username %}{{user.username}}{% else %}Username{%endif%}</a>
 						<div class="navi mt-2">
 							<a href="#" class="navi-item">
 								<span class="navi-link p-0 pb-2">
@@ -35,7 +34,7 @@
 											<!--end::Svg Icon-->
 										</span>
 									</span>
-									<span class="navi-text text-muted text-hover-primary">rahmatkulov@gmail.com</span>
+                            <span class="navi-text text-muted text-hover-primary">{% if user.email %}{{user.email}}{% else %}user@example.com{%endif%}</span>
 								</span>
 							</a>
 							<a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>

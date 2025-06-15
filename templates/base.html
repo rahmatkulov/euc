@@ -30,6 +30,23 @@
     </head>
     {%block content%}{%endblock%}
     </body>
+        <script>
+let colors = [
+    "symbol-light-success",
+    "symbol-light-danger",
+    "symbol-light-warning",
+    "symbol-light-primary",
+];
+
+let elements = document.querySelectorAll(".symbol-light-success");
+
+elements.forEach((el) => {
+    // Pick a random color class
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    el.classList.replace("symbol-light-success", randomColor);
+});
+</script>
+
     <script>
 var HOST_URL =
     "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
@@ -97,5 +114,6 @@ var KTAppSettings = {
     <script src="{% static 'assets/js/pages/crud/file-upload/image-input.js' %}"></script>
     <script src="{% static 'assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js' %}"></script>
     <script src="{% static 'assets/js/pages/crud/forms/widgets/select2.js' %}"></script>
+    <script src="{% static 'scripts.js' %}"></script>
 </html>
 

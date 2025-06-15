@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<!--begin::Head-->
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body"
+    class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <!--begin::Main-->
+    <!--begin::Header Mobile-->
+    {% include "parts/header-mobile.html" %}
+    <!--end::Header Mobile-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="d-flex flex-row flex-column-fluid page">
+            <!--begin::Aside-->
+            {% include "parts/aside.html" %}
+            <!--end::Aside-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <!--begin::Header-->
+                {% include "parts/header.html" %}
+                <!--end::Header-->
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card card-custom bg-light-warning card-stretch gutter-b">
+											<!--begin::Body-->
+											<div class="card-body my-4">
+												<a href="#" class="card-title font-weight-bolder text-warning font-size-h6 mb-4 text-hover-state-dark d-block">Airplus Budget</a>
+												<div class="font-weight-bold text-muted font-size-sm">
+                                                <span class="text-dark-75 font-weight-bolder font-size-h2 mr-2">{{group.progress_percentage}}</span></div>
+												<div class="progress progress-xs mt-7 bg-warning-o-60">
+													<div class="progress-bar bg-warning" role="progressbar" style="width: {{group.progress_percentage}}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
+											</div>
+											<!--end::Body-->
+										</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .container -->
+                    </div>
+                    <!-- .d-flex.flex-column-fluid -->
+                </div>
+                <!--end::Content-->
+                <!--begin::Footer-->
+                {% include "parts/footer.html" %}
+                <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::Main-->
+    <!-- begin::User Panel-->
+    {% include "parts/user-panel.html" %}
+    <!--begin::Quick Cart-->
+    <!--end::Quick Cart-->
+    <!--begin::Quick Panel-->
+    <!--end::Quick Panel-->
+    <!--begin::Chat Panel-->
+    <!--end::Chat Panel-->
+    <!--begin::Scrolltop-->
+    {% include "parts/scrolltop.html" %}
+    <!--end::Scrolltop-->
+    <!--begin::Sticky Toolbar-->
+    <!--end::Sticky Toolbar-->
+    <!--begin::Demo Panel-->
+    <!--end::Demo Panel-->
+</body>
+<!--end::Body-->
+{% endblock %}

@@ -13,7 +13,7 @@
         <!--begin::Page-->
         <div class="d-flex flex-row flex-column-fluid page">
             <!--begin::Aside-->
-            {% include "parts/aside.html" with menu_parent='payments' menu_child='payment_create' %}
+            {% include "parts/aside.html" with menu_parent='students' menu_child='student_create' %}
             <!--end::Aside-->
             <!--begin::Wrapper-->
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
@@ -26,7 +26,7 @@
                         <div class="container">
                             <div class="card card-custom">
                                 <div class="card-header">
-                                    <h3 class="card-title">Updating Payment</h3>
+                                    <h3 class="card-title">Creating Student</h3>
                                 </div>
                                 <!--begin::Form-->
                                 <form class="form" method="post" enctype="multipart/form-data">
@@ -59,7 +59,7 @@
                                                 <button type="submit" class="btn btn-success mr-2" name="save-create">
                                                    Save and add new
                                                 </button>
-                                                <a href="{% url 'common:payment-list' %}" class="btn btn-secondary"><span>Cancel</span></a>
+                                                <a href="{% url 'common:student-list' %}" class="btn btn-secondary"><span>Cancel</span></a>
                                             </div>
                                         </div>
                                     </div>

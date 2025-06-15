@@ -13,7 +13,7 @@
         <!--begin::Page-->
         <div class="d-flex flex-row flex-column-fluid page">
             <!--begin::Aside-->
-            {% include "parts/aside.html" with menu_parent='groups' menu_child='group_list' %}
+            {% include "parts/aside.html" with menu_parent='payments' menu_child='payment_list' %}
             <!--end::Aside-->
             <!--begin::Wrapper-->
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
@@ -34,10 +34,10 @@
                                         <div class="card-header border-0 py-5">
 
                                             <h3 class="card-title align-items-start flex-column">
-                                                <span class="card-label font-weight-bolder text-dark">Groups</span>
+                                                <span class="card-label font-weight-bolder text-dark">Last Payments</span>
                                             </h3>
                                             <div class="card-toolbar">
-                                                <a href="{% url 'common:group-create' %}" class="btn btn-warning font-weight-bolder font-size-sm">Create Group</a>
+                                                <a href="{% url 'common:payment-create' %}" class="btn btn-warning font-weight-bolder font-size-sm">Create a Payment</a>
                                             </div>
                                         </div>
                                         <!--end::Header-->
@@ -50,55 +50,39 @@
                                                         <thead>
                                                             <tr class="text-left text-uppercase">
                                                                 <th style="min-width: 150px" class="pl-7">
-                                                                    <span class="text-dark-75">Group</span>
+                                                                    <span class="text-dark-75">Name of Student</span>
                                                                 </th>
-                                                                <th style="min-width: 100px">Teacher</th>
-                                                                <th style="min-width: 100px">Category</th>
-                                                                <th style="min-width: 100px">Number of Students</th>
-                                                                <th style="min-width: 100px">Days</th>
+                                                                <th style="min-width: 150px" class="pl-7">
+                                                                    <span class="text-dark-75">Amount</span>
+                                                                </th>
+                                                                <th style="min-width: 150px" class="pl-7">
+                                                                    <span class="text-dark-75">Date</span>
+                                                                </th>
                                                                 <th style="min-width: 100px">Actions</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             {% for object in objects %}
-                                                            {% url 'common:group-update' object.pk as u%}
-                                                            {% url 'common:group-delete' object.pk as d%}
+                                                            {% url 'common:payment-update' object.pk as u%}
+                                                            {% url 'common:payment-delete' object.pk as d%}
                                                             <tr>
                                                                 <td class="pl-0 py-6">
                                                                     <div class="d-flex align-items-center">
                                                                         <div class="mr-4 symbol symbol-40 symbol-light-success">
-                                                                            <span class="symbol-label">{{ object.group_name|slice:':1' }}</span>								
+                                                                            <span class="symbol-label">{{ object.student.name|slice:':1' }}</span>								
                                                                         </div>
                                                                         <div>
-                                                                            <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-2 font-size-lg">{{object.group_name}}</a>
+                                                                            <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-2 font-size-lg">{{object.student}}</a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.teacher}}</span>
+                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg ml-4">{{object.amount}}</span>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.category}}</span>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.students_count}}</span>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{object.days}}</span>
+                                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg ml-4">{{object.date}}</span>
                                                                 </td>
                                                                 <td nowrap="nowrap">
-                                                                    <span style="overflow: visible; position: relative; width: 125px">
-                                                                        <a href="{% url 'common:group-detail' object.slug %}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Details">
-                                                                            <span class="svg-icon svg-icon-md">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                                        <rect x="0" y="0" width="24" height="24"/>
-                                                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
-                                                                                        <rect fill="#000000" x="11" y="10" width="2" height="7" rx="1"/>
-                                                                                        <rect fill="#000000" x="11" y="7" width="2" height="2" rx="1"/>
-                                                                                    </g>
-                                                                                </svg><!--end::Svg Icon--></span>
-                                                                        </a>
                                                                     {% include 'parts/actions.html' with update=u delete=d%}
                                                                 </td>
                                                             </tr>
